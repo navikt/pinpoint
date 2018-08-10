@@ -1,0 +1,21 @@
+# ref https://raw.githubusercontent.com/nais/naisd/master/nais_example.yaml
+image: docker.adeo.no:5000/fo/pinpoint
+replicas:
+  min: 2
+  max: 4
+  cpuThresholdPercentage: 50
+port: 8080
+healthcheck:
+  liveness:
+    path: pinpoint/internal/isAlive
+    initialDelay: 120
+  readiness:
+    path: pinpoint/internal/isReady
+    initialDelay: 120
+prometheus:
+  enabled: true
+  path: pinpoint/internal/metrics
+resources:
+  limits:
+    cpu: 3
+team: oppfolging
