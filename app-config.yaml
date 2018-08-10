@@ -8,14 +8,14 @@ port: 8080
 healthcheck:
   liveness:
     path: pinpoint/internal/isAlive
-    initialDelay: 120
+    initialDelay: 10
   readiness:
     path: pinpoint/internal/isReady
-    initialDelay: 120
+    initialDelay: 10
 prometheus:
   enabled: true
   path: pinpoint/internal/metrics
 resources:
   limits:
-    cpu: 3
+    cpu: 1
 team: oppfolging
