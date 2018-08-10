@@ -7,7 +7,7 @@ import prometheus from 'prom-client';
 prometheus.collectDefaultMetrics();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 8991;
 const baseRouter = express.Router({ caseSensitive: false });
 
 app.use(morgan('dev'));

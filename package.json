@@ -21,9 +21,7 @@
     "@types/morgan": "^1.7.35",
     "@types/node-fetch": "^2.1.2",
     "@types/stacktrace-js": "0.0.32",
-    "ts-node": "^7.0.0",
-    "ts-node-dev": "^1.0.0-pre.26",
-    "typescript": "^3.0.1"
+    "ts-node-dev": "^1.0.0-pre.26"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -33,6 +31,8 @@
     "morgan": "^1.9.0",
     "node-fetch": "^2.2.0",
     "prom-client": "^11.1.1",
-    "stacktrace-js": "^2.0.0"
+    "stacktrace-js": "^2.0.0",
+    "ts-node": "^7.0.0",
+    "typescript": "^3.0.1"
   }
 }
