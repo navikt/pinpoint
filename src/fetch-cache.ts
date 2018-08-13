@@ -1,4 +1,5 @@
 import fetch, {RequestInit} from "node-fetch";
+import Log from './logging';
 
 interface CacheEntry {
     data: any;
@@ -14,9 +15,9 @@ function createCacheKey(url: string, options: RequestInit): string {
 }
 
 class FetchCache {
-    static TTL: number = 10 * 60 * 1000;
-    cache: Cache = {};
-    timer: number;
+    public static TTL: number = 10 * 60 * 1000;
+    private cache: Cache = {};
+    private timer: number;
 
 
     constructor() {
@@ -30,15 +31,15 @@ class FetchCache {
             const cacheHit = this.cache[key];
 
             if (cacheHit) {
-                console.log('CacheHit', key);
+                Log.info('CacheHit', key);
                 if (cacheHit.expiration < now) {
                     return cacheHit.data;
                 } else {
-                    console.log('CacheExpiration', key);
+                    Log.info('CacheExpiration', key);
                     delete this.cache[key];
                 }
             } else {
-                console.log('CacheMiss', key);
+                Log.info('CacheMiss', key);
             }
 
             const data = fetch(url, options).then(resp => resp.text());
@@ -64,7 +65,6 @@ class FetchCache {
                 delete this.cache[key];
             });
     }
-
 }
 
 export default FetchCache;

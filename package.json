@@ -6,7 +6,9 @@
   "scripts": {
     "start": "ts-node src/app.ts",
     "dev": "ts-node-dev src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "build": "echo compiled at startup",
+    "test": "echo not implemented"
   },
   "keywords": [
     "error",
@@ -21,7 +23,10 @@
     "@types/morgan": "^1.7.35",
     "@types/node-fetch": "^2.1.2",
     "@types/stacktrace-js": "0.0.32",
-    "ts-node-dev": "^1.0.0-pre.26"
+    "@types/winston": "^2.3.9",
+    "ts-node-dev": "^1.0.0-pre.26",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -33,6 +38,7 @@
     "prom-client": "^11.1.1",
     "stacktrace-js": "^2.0.0",
     "ts-node": "^7.0.0",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.1",
+    "winston": "^3.0.0"
   }
 }
