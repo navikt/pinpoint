@@ -1,0 +1,24 @@
+# ref https://raw.githubusercontent.com/nais/naisd/master/nais_example.yaml
+image: docker.adeo.no:5000/fo/pinpoint
+replicas:
+  min: 2
+  max: 4
+  cpuThresholdPercentage: 50
+port: 8991
+healthcheck:
+  liveness:
+    path: pinpoint/internal/isAlive
+  readiness:
+    path: pinpoint/internal/isReady
+prometheus:
+  enabled: true
+  path: pinpoint/internal/metrics
+resources:
+  limits:
+    cpu: 1
+fasitResources:
+  exposed:
+  - alias: pinpointFssApi
+    resourceType: restservice
+    path: /pinpoint/api
+team: oppfolging
