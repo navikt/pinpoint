@@ -16,4 +16,9 @@ prometheus:
 resources:
   limits:
     cpu: 1
+fasitResources:
+  exposed:
+  - alias: pinpointSbsApi
+    resourceType: restservice
+    path: /pinpoint/api
 team: oppfolging
