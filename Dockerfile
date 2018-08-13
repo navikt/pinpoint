@@ -10,6 +10,7 @@ EXPOSE 8991
 
 COPY package*.json /app/
 RUN npm ci
+RUN npm run build
 
-COPY /src/. /app/src/.
+COPY /dist/. /app/dist/.
 CMD ["npm", "start"]

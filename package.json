@@ -4,10 +4,10 @@
   "description": "Can pinpoint error-locations using sourcemaps",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/app.ts",
+    "start": "node dist/app.js",
     "dev": "ts-node-dev src/app.ts",
     "lint": "tslint -c tslint.json src/**/*.ts",
-    "build": "echo compiled at startup",
+    "build": "tsc -p tsconfig.json",
     "test": "echo not implemented",
     "test:coverage": "echo not implemented"
   },
@@ -25,6 +25,7 @@
     "@types/node-fetch": "^2.1.2",
     "@types/stacktrace-js": "0.0.32",
     "@types/winston": "^2.3.9",
+    "ts-node": "^7.0.0",
     "ts-node-dev": "^1.0.0-pre.26",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.14.0"
@@ -38,7 +39,6 @@
     "node-fetch": "^2.2.0",
     "prom-client": "^11.1.1",
     "stacktrace-js": "^2.0.0",
-    "ts-node": "^7.0.0",
     "typescript": "^3.0.1",
     "winston": "^3.0.0"
   }
