@@ -1,4 +1,5 @@
-FROM docker.adeo.no:5000/pus/node as node-builder
+ARG BASE_IMAGE_PREFIX=""
+FROM ${BASE_IMAGE_PREFIX}node as builder
 
 ENV CI=true
 WORKDIR /app
