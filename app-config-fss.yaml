@@ -21,4 +21,6 @@ fasitResources:
   - alias: pinpointFssApi
     resourceType: restservice
     path: /pinpoint/api
+  - alias: loadbalancer:pinpoint-fss
+    resourceType: loadbalancerconfig
 team: oppfolging
