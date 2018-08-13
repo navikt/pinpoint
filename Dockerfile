@@ -3,13 +3,15 @@ ARG BASE_IMAGE_PREFIX=""
 FROM ${BASE_IMAGE_PREFIX}node as builder
 
 ENV CI=true
-ENV NODE_ENV=production
-WORKDIR /app
 
 EXPOSE 8991
+WORKDIR /app
 
-COPY package*.json /app/
+COPY . /app/.
 RUN npm ci
 
-COPY /src/. /app/src/.
+ENV NODE_ENV=production
+RUN npm run build
+
+COPY /dist/. /app/dist/.
 CMD ["npm", "start"]
