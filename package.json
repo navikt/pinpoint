@@ -8,7 +8,8 @@
     "dev": "ts-node-dev src/app.ts",
     "lint": "tslint -c tslint.json src/**/*.ts",
     "build": "echo compiled at startup",
-    "test": "echo not implemented"
+    "test": "echo not implemented",
+    "test:coverage": "echo not implemented"
   },
   "keywords": [
     "error",
