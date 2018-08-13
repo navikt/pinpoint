@@ -9,6 +9,7 @@ WORKDIR /app
 EXPOSE 8991
 
 COPY package*.json /app/
+COPY tsconfig.json /app/
 RUN npm ci
 RUN npm run build
 
