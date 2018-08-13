@@ -7,7 +7,7 @@ WORKDIR /app
 EXPOSE 8991
 
 COPY package*.json /app/
-RUN npm install
+RUN npm ci
 
 COPY /src/. /app/src/.
 CMD ["npm", "start"]
