@@ -8,10 +8,8 @@ port: 8080
 healthcheck:
   liveness:
     path: pinpoint/internal/isAlive
-    initialDelay: 10
   readiness:
     path: pinpoint/internal/isReady
-    initialDelay: 10
 prometheus:
   enabled: true
   path: pinpoint/internal/metrics
