@@ -13,11 +13,15 @@ const corsOptions: CorsOptions = {
 };
 
 const fetchCache = new FetchCache();
+// Error in typedefinition, trust me.
+// Both `ajax` and `sourceCache` is needed to get control over StacktraceJS's caching
+const config: any = { ajax: fetchCache.getFetch(), sourceCache: {} };
+
 function pinpoint(request: Request, response: Response) {
     const { message, url, line, column, error: errorStr } = request.body;
     const error: Error = deserialize(errorStr);
 
-    StacktraceJS.fromError(error, { ajax: fetchCache.getFetch() } as any) // Error in typedefinition, trust me
+    StacktraceJS.fromError(error, config)
         .then((stacktrace) => ({
             ok: true,
             file: stacktrace[0].fileName,

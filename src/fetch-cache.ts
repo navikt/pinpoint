@@ -31,8 +31,8 @@ class FetchCache {
             const cacheHit = this.cache[key];
 
             if (cacheHit) {
-                Log.info('CacheHit', key);
-                if (cacheHit.expiration < now) {
+                if (now < cacheHit.expiration) {
+                    Log.info('CacheHit', key);
                     return cacheHit.data;
                 } else {
                     Log.info('CacheExpiration', key);
