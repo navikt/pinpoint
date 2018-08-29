@@ -26,15 +26,13 @@ function pinpoint(request: Request, response: Response) {
             ok: true,
             file: stacktrace[0].fileName,
             lineP: stacktrace[0].lineNumber,
-            columnP: stacktrace[0].columnNumber,
-            stacktrace
+            columnP: stacktrace[0].columnNumber
         }))
         .catch(() => ({
             ok: false,
             file: url,
             lineP: line,
-            columnP: column,
-            stacktrace: error
+            columnP: column
         }))
         .then((res) => ({
             message,
@@ -42,8 +40,7 @@ function pinpoint(request: Request, response: Response) {
             jsFileUrl: res.file,
             lineNumber: res.lineP,
             column: res.columnP,
-            messageIndexed: message,
-            stacktrace: res.stacktrace
+            messageIndexed: message
         }))
         .then((report) => {
             response.set('Content-Type', 'application/json');
