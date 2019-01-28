@@ -1,5 +1,6 @@
 # ref https://raw.githubusercontent.com/nais/naisd/master/nais_example.yaml
 image: docker.adeo.no:5000/fo/pinpoint
+team: pus
 replicas:
   min: 2
   max: 4
@@ -21,4 +22,5 @@ fasitResources:
   - alias: pinpointSbsApi
     resourceType: restservice
     path: /pinpoint/api
-team: oppfolging
+alertProfiles:
+ - basic
