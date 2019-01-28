@@ -4,6 +4,7 @@ import cors, {CorsOptions} from 'cors';
 import deserialize from 'deserialize-error';
 import StacktraceJS from 'stacktrace-js';
 import FetchCache from './fetch-cache';
+import StackFrame = StackTrace.StackFrame;
 
 const corsOptions: CorsOptions = {
     origin: [/\.nav.no$/, /\.adeo.no$/],
@@ -15,7 +16,11 @@ const corsOptions: CorsOptions = {
 const fetchCache = new FetchCache();
 // Error in typedefinition, trust me.
 // Both `ajax` and `sourceCache` is needed to get control over StacktraceJS's caching
-const config: any = { ajax: fetchCache.getFetch(), sourceCache: {} };
+const config: any = {ajax: fetchCache.getFetch(), sourceCache: {}};
+
+function formatStackFrame({columnNumber, lineNumber, fileName, functionName}: StackFrame) {
+    return `  at ${functionName || '(anonymous)'} (${fileName}:${lineNumber}:${columnNumber})`;
+}
 
 function pinpoint(request: Request, response: Response) {
     const { message, url, line, column, error: errorStr } = request.body;
@@ -26,13 +31,15 @@ function pinpoint(request: Request, response: Response) {
             ok: true,
             file: stacktrace[0].fileName,
             lineP: stacktrace[0].lineNumber,
-            columnP: stacktrace[0].columnNumber
+            columnP: stacktrace[0].columnNumber,
+            stacktrace: stacktrace.map(formatStackFrame).join('\n')
         }))
         .catch(() => ({
             ok: false,
             file: url,
             lineP: line,
-            columnP: column
+            columnP: column,
+            stacktrace: ""
         }))
         .then((res) => ({
             message,
@@ -40,6 +47,7 @@ function pinpoint(request: Request, response: Response) {
             jsFileUrl: res.file,
             lineNumber: res.lineP,
             column: res.columnP,
+            stacktrace: res.stacktrace,
             messageIndexed: message
         }))
         .then((report) => {
