@@ -17,13 +17,5 @@ prometheus:
 resources:
   limits:
     cpu: 1
-fasitResources:
-  exposed:
-  - alias: pinpointFssApi
-    resourceType: restservice
-    path: /pinpoint/api
-  used:
-  - alias: loadbalancer:pinpoint-fss
-    resourceType: loadbalancerconfig
 alertProfiles:
  - basic
