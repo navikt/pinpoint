@@ -16,6 +16,10 @@ prometheus:
   path: pinpoint/internal/metrics
 resources:
   limits:
-    cpu: 1
+    cpu: 2
+    memory: 768Mi
+  requests:
+    cpu: 500m
+    memory: 512Mi
 alertProfiles:
  - basic

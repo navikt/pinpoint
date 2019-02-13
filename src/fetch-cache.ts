@@ -32,14 +32,14 @@ class FetchCache {
 
             if (cacheHit) {
                 if (now < cacheHit.expiration) {
-                    Log.info('CacheHit', key);
+                    Log.info('CacheHit ' + key);
                     return cacheHit.data;
                 } else {
-                    Log.info('CacheExpiration', key);
+                    Log.info('CacheExpiration ' + key);
                     delete this.cache[key];
                 }
             } else {
-                Log.info('CacheMiss', key);
+                Log.info('CacheMiss ' + key);
             }
 
             const data = fetch(url, options).then(resp => resp.text());
