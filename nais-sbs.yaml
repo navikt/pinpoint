@@ -1,0 +1,30 @@
+kind: Application
+apiVersion: nais.io/v1alpha1
+metadata:
+  name: pinpoint
+  namespace: {{namespace}}
+  labels:
+    team: pto
+spec:
+  image: docker.pkg.github.com/navikt/pinpoint/pinpoint:{{version}}
+  port: 8991
+  liveness:
+    path: pinpoint/internal/isAlive
+    initialDelay: 60
+  readiness:
+    path: pinpoint/internal/isReady
+    initialDelay: 60
+  prometheus:
+    enabled: true
+    path: pinpoint/internal/metrics
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: "2"
+      memory: 768Mi
+    requests:
+      cpu: 200m
+      memory: 512Mi
