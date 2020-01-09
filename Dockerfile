@@ -11,5 +11,4 @@ RUN npm ci
 ENV NODE_ENV=production
 RUN npm run build
 
-COPY /dist/. /app/dist/.
 CMD ["npm", "start"]
