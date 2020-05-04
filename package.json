@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev": "ts-node-dev src/app.ts",
+    "dev": "ts-node-dev --max-old-space-size=1536 src/app.ts",
     "lint": "tslint -c tslint.json src/**/*.ts",
     "build": "tsc -p tsconfig.json",
     "test": "echo not implemented",
