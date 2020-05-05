@@ -52,14 +52,10 @@ function pinpoint(request: Request, response: Response) {
             messageIndexed: message
         }))
         .then((report) => {
+            const reportStr = JSON.stringify(report);
             response.set('Content-Type', 'application/json');
-            response.send(JSON.stringify(report));
-            Log.debug(
-                "Processed error",
-                errorStr,
-                error,
-                report
-            );
+            response.send(reportStr);
+            Log.debug(`Processed error\nError: ${errorStr}\nReport: ${reportStr}`);
         });
 }
 
