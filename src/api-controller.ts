@@ -4,6 +4,7 @@ import cors, {CorsOptions} from 'cors';
 import deserialize from 'deserialize-error';
 import StacktraceJS from 'stacktrace-js';
 import FetchCache from './fetch-cache';
+import Log from './logging';
 import StackFrame = StackTrace.StackFrame;
 
 const corsOptions: CorsOptions = {
@@ -53,6 +54,12 @@ function pinpoint(request: Request, response: Response) {
         .then((report) => {
             response.set('Content-Type', 'application/json');
             response.send(JSON.stringify(report));
+            Log.debug(
+                "Processed error",
+                errorStr,
+                error,
+                report
+            );
         });
 }
 
