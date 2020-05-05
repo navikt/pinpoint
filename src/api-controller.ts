@@ -15,9 +15,6 @@ const corsOptions: CorsOptions = {
 };
 
 const fetchCache = new FetchCache();
-// Error in typedefinition, trust me.
-// Both `ajax` and `sourceCache` is needed to get control over StacktraceJS's caching
-const config: any = {ajax: fetchCache.getFetch(), sourceCache: {}};
 
 function formatStackFrame({columnNumber, lineNumber, fileName, functionName}: StackFrame) {
     return `  at ${functionName || '(anonymous)'} (${fileName}:${lineNumber}:${columnNumber})`;
@@ -27,6 +24,10 @@ function pinpoint(request: Request, response: Response) {
     const { message, url, line, column, error: errorStr } = request.body;
     const error: Error = deserialize(errorStr);
 
+    // Error in typedefinition, trust me.
+    // Both `ajax` and `sourceCache` is needed to get control over StacktraceJS's caching
+    // stacktrace-libraries mutate `sourceCache` hence why it needs to be recreated for each request
+    const config: any = {ajax: fetchCache.getFetch(), sourceCache: {}};
     StacktraceJS.fromError(error, config)
         .then((stacktrace) => ({
             ok: true,
@@ -55,7 +56,7 @@ function pinpoint(request: Request, response: Response) {
             const reportStr = JSON.stringify(report);
             response.set('Content-Type', 'application/json');
             response.send(reportStr);
-            Log.debug(`Processed error\nError: ${errorStr}\nReport: ${reportStr}`);
+            Log.debug(`Processed error\nError: ${JSON.stringify(errorStr)}\nReport: ${reportStr}`);
         });
 }
 
