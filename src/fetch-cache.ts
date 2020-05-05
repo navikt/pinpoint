@@ -15,7 +15,7 @@ function cleanUrl(url: string): string {
 }
 
 function createCacheKey(url: string, options: RequestInit): string {
-    return `${options.method || 'GET'}-${cleanUrl}`;
+    return `${options.method || 'GET'}-${url}`;
 }
 
 class FetchCache {
