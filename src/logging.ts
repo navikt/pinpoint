@@ -5,8 +5,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const options = {
     console: {
-        // level: isDev ? 'debug' : 'info',
-        level: 'debug',
+        level: isDev ? 'debug' : 'info',
         handleExceptions: true,
         colorize: false
     }
