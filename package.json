@@ -22,6 +22,7 @@
     "@types/cors": "^2.8.4",
     "@types/express": "^4.16.0",
     "@types/morgan": "^1.7.35",
+    "@types/node": "^14.11.5",
     "@types/node-fetch": "^2.1.2",
     "@types/stacktrace-js": "0.0.32",
     "@types/winston": "^2.3.9",
@@ -34,12 +35,12 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "deserialize-error": "0.0.3",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.2.0",
-    "prom-client": "^11.1.1",
+    "node-fetch": "^2.6.1",
+    "prom-client": "^11.5.3",
     "stacktrace-js": "^2.0.0",
-    "typescript": "^3.0.1",
-    "winston": "^3.0.0"
+    "typescript": "^3.9.7",
+    "winston": "^3.3.3"
   }
 }
