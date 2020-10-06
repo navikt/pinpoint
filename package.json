@@ -34,12 +34,12 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "deserialize-error": "0.0.3",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.2.0",
+    "node-fetch": "^2.6.1",
     "prom-client": "^11.5.3",
     "stacktrace-js": "^2.0.0",
     "typescript": "^3.0.1",
-    "winston": "^3.0.0"
+    "winston": "^3.3.3"
   }
 }
