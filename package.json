@@ -39,7 +39,7 @@
     "node-fetch": "^2.2.0",
     "prom-client": "^11.1.1",
     "stacktrace-js": "^2.0.0",
-    "typescript": "^3.0.1",
+    "typescript": "^3.9.7",
     "winston": "^3.0.0"
   }
 }
