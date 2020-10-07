@@ -39,7 +39,7 @@
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.1",
     "prom-client": "^11.5.3",
-    "stacktrace-js": "^2.0.0",
+    "stacktrace-js": "^2.0.2",
     "typescript": "^3.9.7",
     "winston": "^3.3.3"
   }
