@@ -25,7 +25,7 @@ jobs:
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push ${IMAGE}
 
-  deploy-q0-fss:
+  deploy-dev-fss:
     if: github.ref == 'refs/heads/dev'
     needs: build
     runs-on: ubuntu-latest
@@ -35,13 +35,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Deploy application to Q0 fss
+      - name: Deploy application to dev
         uses: nais/deploy/actions/deploy@v1
         if: github.ref == 'refs/heads/dev'
         env:
           CLUSTER: dev-fss
           RESOURCE: nais-fss.yaml
-          VAR: version=${{ github.sha }},namespace=q0
+          VAR: version=${{ github.sha }}
 
   deploy-prod-fss:
     if: github.ref == 'refs/heads/master'
@@ -57,4 +57,4 @@ jobs:
         env:
           CLUSTER: prod-fss
           RESOURCE: nais-fss.yaml
-          VAR: version=${{ github.sha }},namespace=default
+          VAR: version=${{ github.sha }}
