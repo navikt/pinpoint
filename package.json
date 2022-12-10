@@ -34,7 +34,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "deserialize-error": "0.0.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1",
     "prom-client": "^11.5.3",
